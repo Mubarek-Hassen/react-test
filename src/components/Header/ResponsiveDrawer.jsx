@@ -15,7 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import LongMenu from './LongMenu'
-import { Avatar, SvgIcon } from '@mui/material';
+import { Avatar, Badge, SvgIcon } from '@mui/material';
 import { PowerSettingsNew, PlaylistAddCheck, Devices, AccountCircle, Drafts } from '@mui/icons-material';
 
 const drawerWidth = 240;
@@ -38,13 +38,14 @@ function ResponsiveDrawer(props) {
       <List>
         {['Account Settings', 'Paired Devices', 'Invites'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton sx={{  }}  >
               <ListItemIcon>
                 {index === 0 && <AccountCircle />}
                 {index === 1 && <Devices />}
                 {index === 2 && <Drafts />}
               </ListItemIcon>
               <ListItemText primary={text} />
+              {index === 2 && <Badge badgeContent={2} color='info' anchorOrigin={{horizontal: 'left', vertical: 'top'}} sx={{mx: 2}} ></Badge> }
             </ListItemButton>
           </ListItem>
         ))}
@@ -85,10 +86,10 @@ function ResponsiveDrawer(props) {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` }, backgroundColor: ''
+          ml: { sm: `${drawerWidth}px` }, boxShadow: 'none'
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{ backgroundColor: 'rgb(21,50,76)', }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -148,7 +149,7 @@ function ResponsiveDrawer(props) {
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
-        <Toolbar />
+        {/* <Toolbar /> */}
       </Box>
     </Box>
   );

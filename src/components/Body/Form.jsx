@@ -1,4 +1,4 @@
-import { Box, Avatar, Button, SvgIcon, Input, InputAdornment, FormControlLabel, Switch } from '@mui/material';
+import { Box, Avatar, Button, SvgIcon, Input, InputAdornment, FormControlLabel, Switch, Typography } from '@mui/material';
 import { AddPhotoAlternate } from '@mui/icons-material';
 import {useState} from 'react'
 
@@ -26,27 +26,29 @@ const Form =()=>{
 
   return (
     <Box>
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Box >
       
-      <Box>
-        <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2W9COm2KpsSYsXUwJOcqxUzxth1ssNNFzrg&usqp=CAU" alt="cat" sx={{ width: 100, height: 100, border: '2px white solid' }} />
-        <h2>Meow Miaw</h2>
-      </Box>
-
+      <Box sx={{ml: 6, mt: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2W9COm2KpsSYsXUwJOcqxUzxth1ssNNFzrg&usqp=CAU" alt="cat" sx={{ width: 150, height: 150, border: '2px white solid' }} />
         <Button>
           <SvgIcon> 
-            <AddPhotoAlternate/> 
+            <AddPhotoAlternate sx={{color: 'white'}}/> 
           </SvgIcon>
         </Button>
+      </Box>
+
         </Box>
+        <Typography sx={{mr: 3}}>Miaw Miaw</Typography>
 
         <Box>
-        <Input placeholder="Full Name" sx={{m: 1, width: '70%'}} /> <br />
-        <Input placeholder="Email" sx={{m: 1, width: '70%'}} /> <br />
-        <Input placeholder="Phone Number" onChange={ handleInputPhone } value={ phoneNo } sx={{m: 1, width: '70%'}} /> <br />
-        <Input placeholder="Password" type='password' sx={{m: 1, width: '70%'}} endAdornment={<InputAdornment position='end'><Button>Change Password</Button></InputAdornment> } /> <br />
-        <Input placeholder="Access Pin" sx={{m: 1, width: '70%'}} endAdornment={<InputAdornment position='end'>ACCESS PIN</InputAdornment> } /> <br />
-        {/* <Input placeholder="Email" sx={{m: 1, width: '70%'}} /> <br /> */}
+        <Input placeholder="Full Name" sx={{m: 1, width: '70%', color: 'white' }} /> <br />
+        <Input placeholder="Email" sx={{m: 1, width: '70%', color: 'white'}} /> <br />
+        
+        <Input placeholder="Phone Number" onChange={ handleInputPhone } value={ phoneNo } sx={{m: 1, width: '70%', color: 'white'}} /> <br />
+        
+        <Input placeholder="Password" type='password' sx={{m: 1, width: '70%', color: 'white'}} endAdornment={<InputAdornment position='end'><Button>Change Password</Button></InputAdornment> } /> <br />
+        
+        <Input placeholder="Access Pin" sx={{m: 1, width: '70%', color: 'white'}} endAdornment={ <InputAdornment position='end'>ACCESS PIN</InputAdornment> } /> <br />
         
         <FormControlLabel
           value="end"
@@ -54,6 +56,7 @@ const Form =()=>{
           label="ENABLE PAIRING"
           labelPlacement="end" 
           sx={{m: 1, width: '70%'}}
+          
         />
 
         </Box>

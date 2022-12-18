@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -23,15 +23,12 @@ const options = [
 
 const ITEM_HEIGHT = 48;
 
-const LongMenu = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-
+function LongMenu() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -45,6 +42,7 @@ const LongMenu = () => {
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleClick}
+        color="inherit"
       >
         <MoreVertIcon />
       </IconButton>
