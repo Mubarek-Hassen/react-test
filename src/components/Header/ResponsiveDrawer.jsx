@@ -16,7 +16,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import LongMenu from './LongMenu'
 import { Avatar, Badge, SvgIcon } from '@mui/material';
-import { PowerSettingsNew, PlaylistAddCheck, Devices, AccountCircle, Drafts } from '@mui/icons-material';
+import { PowerSettingsNew, PlaylistAddCheck, Devices, AccountCircle, Drafts, ArrowDropDown } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -30,10 +30,17 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-      <Toolbar />
-      <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2W9COm2KpsSYsXUwJOcqxUzxth1ssNNFzrg&usqp=CAU" alt="cat" sx={{ width: 56, height: 56 }} />
-      <h3>Janet Perkins</h3>
-      <p>Charleston, SC</p>
+
+        <Box sx={{mx: 2, mt: 4,}}>
+      <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2W9COm2KpsSYsXUwJOcqxUzxth1ssNNFzrg&usqp=CAU" alt="cat" sx={{ width: 66, height: 66 }} />
+      </Box>
+      <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'end', mx: 2, mb: 1,}}>
+      <Box>
+      <p id='insideName'>Janet Perkins</p>
+      <p id='insideLocation'>Charleston, SC</p>
+      </Box>
+      <ArrowDropDown />
+      </Box>
       <Divider />
       <List>
         {['Account Settings', 'Paired Devices', 'Invites'].map((text, index) => (
@@ -45,7 +52,7 @@ function ResponsiveDrawer(props) {
                 {index === 2 && <Drafts />}
               </ListItemIcon>
               <ListItemText primary={text} />
-              {index === 2 && <Badge badgeContent={2} color='info' anchorOrigin={{horizontal: 'left', vertical: 'top'}} sx={{mx: 2}} ></Badge> }
+              {index === 2 && <Badge badgeContent={2} color='primary' anchorOrigin={{horizontal: 'left', vertical: 'top'}} sx={{mx: 2}} ></Badge> }
             </ListItemButton>
           </ListItem>
         ))}

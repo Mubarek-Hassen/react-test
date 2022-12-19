@@ -2,6 +2,25 @@
   text-align: center;
   background-color: rgb(21,50,76);
 }
+#insideName {
+  margin-bottom: 0;
+  font-family: 'Play' sans-serif;
+  font-weight: 700;
+  /* color: white; */
+}
+#insideLocation {
+  margin: 0;
+  font-family: 'Play' sans-serif;
+}
+
+#mainName{
+  margin-top: 1;
+  font-family: 'Play' sans-serif;
+  font-weight: 400;
+  font-size:x-large;
+  color: white;
+}
+
 
 .App-logo {
   height: 40vmin;
