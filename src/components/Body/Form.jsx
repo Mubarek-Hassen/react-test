@@ -2,9 +2,10 @@ import { Box, Avatar, Button, SvgIcon, Input, InputAdornment, FormControlLabel, 
 import { AddPhotoAlternate } from '@mui/icons-material';
 import {useState} from 'react'
 
-const Form =()=>{
+const Form =(props)=>{
 
   const [formInputs, setFormInputs] = useState({
+    id: '',
     fullName: '',
     phoneNumber: '',
     email: '',
@@ -50,6 +51,7 @@ const Form =()=>{
   }
 
   const pairingChangeHandler =(e)=>{
+    e.preventDefault()
     setFormInputs({...formInputs, pairing: !formInputs.pairing})
   }
   console.log(formInputs)
@@ -62,8 +64,25 @@ const Form =()=>{
   if(emailIsValid && phoneIsValid && formInputs.accessPin && formInputs.fullName && formInputs.password){
     formIsVAlid = true
   }
-  console.log(formIsVAlid)
 
+
+  ////////// Sending data to API
+
+  const sendData = async (formInputs)=>{
+    const response = await fetch('http://projects.codeandtrust.com/api/user/create',{
+      method: 'POST',
+      body: JSON.stringify(formInputs)
+    })
+    console.log(response.json())
+
+  }
+
+  const onFormSubmission =(e)=>{
+    e.preventDefault()
+    sendData(formInputs)
+
+  }
+  
 
   return (
     <Box>
@@ -82,6 +101,8 @@ const Form =()=>{
         <p id='mainName'>Janet Perkins</p>
 
         <Box>
+  
+      <form >
         <Input placeholder="Full Name" onChange={ nameChangeHandler} sx={{m: 1, width: '70%', color: 'white' }} /> <br />
         
         <Input onChange={ emailChangeHandler } placeholder="Email" sx={{m: 1, width: '70%', color: 'white'}} /> <br />
@@ -98,7 +119,12 @@ const Form =()=>{
           labelPlacement="end" 
           sx={{ color: 'rgb(18,150,180)', width: '70%', }}
         />
-
+        { formIsVAlid && <div style={{backgroundColor: 'white', display: 'flex', justifyContent: 'end'}}>
+        <Button sx={{color: 'rgb(27,209,255)', mt: 2}}>Cancel</Button>
+        <Button variant='contained' sx={{backgroundColor: 'rgb(27,209,255)', mt: 2, mx: 2}} onClick={onFormSubmission}>Save</Button>
+      </div> }
+      </form>
+  
         </Box>
     </Box>
 
