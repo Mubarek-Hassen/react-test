@@ -52,9 +52,17 @@ const Form =()=>{
   const pairingChangeHandler =(e)=>{
     setFormInputs({...formInputs, pairing: !formInputs.pairing})
   }
-
-
   console.log(formInputs)
+
+  let emailIsValid = formInputs.email.includes('@')
+  let phoneIsValid = formInputs.phoneNumber.length === 14;
+
+  let formIsVAlid = false;
+
+  if(emailIsValid && phoneIsValid && formInputs.accessPin && formInputs.fullName && formInputs.password){
+    formIsVAlid = true
+  }
+  console.log(formIsVAlid)
 
 
   return (
@@ -62,7 +70,7 @@ const Form =()=>{
     <Box>
       
       <Box sx={{ml: 6, mt: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2W9COm2KpsSYsXUwJOcqxUzxth1ssNNFzrg&usqp=CAU" alt="cat" sx={{ width: 150, height: 150, border: '2px white solid' }} />
+        <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnJojmgN3Kp5hJzjFARWAuiecsmHNzefg4rQ&usqp=CAU" alt="cat" sx={{ width: 150, height: 150, border: '2px white solid' }} />
         <Button>
           <SvgIcon> 
             <AddPhotoAlternate sx={{color: 'white'}}/> 

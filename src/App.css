@@ -6,11 +6,12 @@
   margin-bottom: 0;
   font-family: 'Play' sans-serif;
   font-weight: 700;
-  /* color: white; */
+  color: white;
 }
 #insideLocation {
   margin: 0;
   font-family: 'Play' sans-serif;
+  color: white
 }
 
 #mainName{

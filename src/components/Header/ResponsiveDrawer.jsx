@@ -30,9 +30,9 @@ function ResponsiveDrawer(props) {
 
   const drawer = (
     <div>
-
+      <Box sx={{backgroundColor: 'rgb(21,50,76)', p: 1}}>
         <Box sx={{mx: 2, mt: 4,}}>
-      <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2W9COm2KpsSYsXUwJOcqxUzxth1ssNNFzrg&usqp=CAU" alt="cat" sx={{ width: 66, height: 66 }} />
+      <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnJojmgN3Kp5hJzjFARWAuiecsmHNzefg4rQ&usqp=CAU" alt="cat" sx={{ width: 66, height: 66 }} />
       </Box>
       <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'end', mx: 2, mb: 1,}}>
       <Box>
@@ -40,6 +40,7 @@ function ResponsiveDrawer(props) {
       <p id='insideLocation'>Charleston, SC</p>
       </Box>
       <ArrowDropDown />
+      </Box>
       </Box>
       <Divider />
       <List>
