@@ -2,15 +2,14 @@ import { Box, Avatar, Button, SvgIcon, Input, InputAdornment, FormControlLabel, 
 import { AddPhotoAlternate } from '@mui/icons-material';
 import {useState} from 'react'
 
-const Form =(props)=>{
-
+const Form =( )=>{
   const [formInputs, setFormInputs] = useState({
-    id: '',
-    fullName: '',
-    phoneNumber: '',
-    email: '',
-    password: '',
-    accessPin: '',
+    id: `mub012`,
+    name: '',
+    user_phone: '',
+    user_email: '',
+    // password: '',
+    // accessPin: '',
     pairing: false,
   })
 
@@ -31,16 +30,15 @@ const Form =(props)=>{
 
   const handleInputPhone = e =>{
     let validNo = phoneNumberFormat(e.target.value)
-    setFormInputs({...formInputs, phoneNumber: validNo})
-    console.log(formInputs.phoneNumber.length)
+    setFormInputs({...formInputs, user_phone: validNo})
   }
 
   const nameChangeHandler = e =>{
-    setFormInputs({...formInputs, fullName: e.target.value})
+    setFormInputs({...formInputs, name: e.target.value})
   }
 
   const emailChangeHandler = e =>{
-    setFormInputs({...formInputs, email: e.target.value})
+    setFormInputs({...formInputs, user_email: e.target.value})
   }
 
   const passwordChangeHandler = e =>{
@@ -54,14 +52,14 @@ const Form =(props)=>{
     e.preventDefault()
     setFormInputs({...formInputs, pairing: !formInputs.pairing})
   }
-  console.log(formInputs)
+  // console.log(formInputs)
 
-  let emailIsValid = formInputs.email.includes('@')
-  let phoneIsValid = formInputs.phoneNumber.length === 14;
+  let emailIsValid = formInputs.user_email.includes('@')
+  let phoneIsValid = formInputs.user_phone.length === 14;
 
   let formIsVAlid = false;
 
-  if(emailIsValid && phoneIsValid && formInputs.accessPin && formInputs.fullName && formInputs.password){
+  if(emailIsValid && phoneIsValid && formInputs.accessPin && formInputs.name && formInputs.password){
     formIsVAlid = true
   }
 
@@ -69,11 +67,20 @@ const Form =(props)=>{
   ////////// Sending data to API
 
   const sendData = async (formInputs)=>{
-    const response = await fetch('http://projects.codeandtrust.com/api/user/create',{
-      method: 'POST',
-      body: JSON.stringify(formInputs)
-    })
-    console.log(response.json())
+    try {
+      const response = await fetch('http://projects.codeandtrust.com/api/user/create',{
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formInputs)
+      })
+      const data = await response.json()
+      console.log(data)
+      
+    } catch (error) {
+      console.log(error)
+    }
 
   }
 
@@ -102,12 +109,12 @@ const Form =(props)=>{
 
         <Box>
   
-      <form >
-        <Input placeholder="Full Name" onChange={ nameChangeHandler} sx={{m: 1, width: '70%', color: 'white' }} /> <br />
+      <form onSubmit={ onFormSubmission } >
+        <Input placeholder="Full Name" onChange={ nameChangeHandler} sx={{m: 1, width: '70%', color: 'white' }} value={formInputs.name} /> <br />
         
-        <Input onChange={ emailChangeHandler } placeholder="Email" sx={{m: 1, width: '70%', color: 'white'}} /> <br />
+        <Input onChange={ emailChangeHandler } placeholder="Email" value={ formInputs.user_email} sx={{m: 1, width: '70%', color: 'white'}} /> <br />
         
-        <Input placeholder="Phone Number" onChange={ handleInputPhone } value={ formInputs.phoneNumber } sx={{m: 1, width: '70%', color: 'white'}} /> <br />
+        <Input placeholder="Phone Number" onChange={ handleInputPhone } value={ formInputs.user_phone } sx={{m: 1, width: '70%', color: 'white'}} /> <br />
         
         <Input placeholder="Password" onChange={ passwordChangeHandler} type='password' sx={{m: 1, width: '70%', color: 'white'}} endAdornment={<InputAdornment position='end'><Button sx={{color: 'rgb(18,150,180)'}}>Change Password</Button></InputAdornment> } /> <br />
         
@@ -121,7 +128,7 @@ const Form =(props)=>{
         />
         { formIsVAlid && <div style={{backgroundColor: 'white', display: 'flex', justifyContent: 'end'}}>
         <Button sx={{color: 'rgb(27,209,255)', mt: 2}}>Cancel</Button>
-        <Button variant='contained' sx={{backgroundColor: 'rgb(27,209,255)', mt: 2, mx: 2}} onClick={onFormSubmission}>Save</Button>
+        <Button variant='contained' sx={{backgroundColor: 'rgb(27,209,255)', mt: 2, mx: 2}} type='submit'>Save</Button>
       </div> }
       </form>
   

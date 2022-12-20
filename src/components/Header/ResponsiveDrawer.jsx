@@ -39,7 +39,7 @@ function ResponsiveDrawer(props) {
       <p id='insideName'>Janet Perkins</p>
       <p id='insideLocation'>Charleston, SC</p>
       </Box>
-      <ArrowDropDown />
+      <ArrowDropDown sx={{color: 'white'}} />
       </Box>
       </Box>
       <Divider />
